@@ -5,7 +5,7 @@ import ProfileIcon from "../assets/icons/profile-icon.svg?react"
 function NavigationFooter() {
     return(
         <>
-            <div className="fixed inset-x-0 bottom-0 m-5">
+            <div className="fixed inset-x-0 bottom-0 m-8">
             <ul className="menu menu-horizontal bg-base-200 mt-6 mb-6 w-full justify-evenly rounded-full">
                 <li>
                     <a className="tooltip hover:bg-[#25304F] bg-[#25304F] rounded-full p-2.5 m-0.5" data-tip="Home">
