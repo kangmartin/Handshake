@@ -1,4 +1,5 @@
 import SingleCardAssociation from "./SingleCardAssociation.jsx";
+import CardSwiper from "./CardSwiper.jsx";
 function FavoriteAssociationsList(){
     return(
         <>
@@ -17,6 +18,7 @@ function FavoriteAssociationsList(){
                 <SingleCardAssociation/>
                 <SingleCardAssociation/>
                 <SingleCardAssociation/>
+
             </div>
 
         </>
