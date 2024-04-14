@@ -1,22 +1,22 @@
+import React, { useState, useMemo, useRef } from 'react'
 import TinderCard from 'react-tinder-card'
-import {useRef, useState, useMemo, createRef} from "react";
-import questions from "../assets/questions";
-import LikeIcon from "../assets/icons/liked-icon.svg?react"
+import questions from "../assets/questions.json";
+import LikeIcon from "../assets/icons/like-icon.svg?react"
 import DislikeIcon from "../assets/icons/dislike-icon.svg?react"
-
 const db = questions
 
-function CardSwiper () {
+function Advanced () {
 
     const [currentIndex, setCurrentIndex] = useState(db.length - 1)
     const [lastDirection, setLastDirection] = useState()
+    // used for outOfFrame closure
     const currentIndexRef = useRef(currentIndex)
 
     const childRefs = useMemo(
         () =>
             Array(db.length)
                 .fill(0)
-                .map((i) => createRef()),
+                .map((i) => React.createRef()),
         []
     )
 
@@ -29,72 +29,63 @@ function CardSwiper () {
 
     // set last direction and decrease current index
     const swiped = (direction, nameToDelete, index) => {
-        console.log(nameToDelete + ' got swiped ' + direction)
         setLastDirection(direction)
-        // Remove the card from the db array
-        db.splice(index, 1)
-        // Update the current index after removing the card
+        console.log(nameToDelete, "->", direction)
         updateCurrentIndex(index - 1)
-        // If the card was swiped to the right, restore it to its original position
-        if (direction === 'right') {
-            childRefs[index].current.restoreCard()
-        }
     }
 
-
+    const outOfFrame = (name, idx) => {
+        console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current)
+        // handle the case in which go back is pressed before card goes outOfFrame
+        currentIndexRef.current >= idx && childRefs[idx].current.restoreCard()
+        // it happens multiple outOfFrame events are queued and the card disappear
+        // during latest swipes. Only the last outOfFrame event should be considered valid
+    }
 
     const swipe = async (dir) => {
         if (canSwipe && currentIndex < db.length) {
-            await childRefs[currentIndex].current.swipe(dir)
-            // Swipe the card!
-            }else{
-            console.log("on peux plus !")
+            await childRefs[currentIndex].current.swipe(dir) // Swipe the card!
         }
-
     }
 
 
     return (
-        <>
-            <div>
-                <h1 className={" flex flex-row text-2xl"}>Ecolo <em>SWIPE</em> ™</h1>
-
-                <div className='cardContainer flex justify-center'>
-                    {db.map((character, index) => (
-                        <TinderCard
-                            ref={childRefs[index]}
-                            className='swipe absolute'
-                            key={character.name}
-                            onSwipe={(dir) => swiped(dir, character.name, index)}
-
-                        >
-                            <div className="card w-72 h-96 bg-error shadow-xl">
-                                <div className="card-body">
-                                    <h2 className="card-title">{character.name}</h2>
-                                </div>
+    <div>
+        <div className={"flex justify-center mt-8"}>
+            <img src="/logo-handshake-white.svg" alt="Handshake Logo" className={"size-16"}/>
+        </div>
+        <div>
+            <div className='cardContainer flex justify-center mt-14'>
+                {db.map((character, index) => (
+                    <TinderCard
+                        ref={childRefs[index]}
+                        className='swipe absolute'
+                        key={character.name}
+                        onSwipe={(dir) => swiped(dir, character.name, index)}
+                        onCardLeftScreen={() => outOfFrame(character.name, index)}
+                        preventSwipe={["up", "down"]}
+                    >
+                        <div className="card w-72 h-96 bg-error shadow-xl">
+                            <div className="card-body">
+                                <h2 className="card-title">{character.name}</h2>
                             </div>
-                        </TinderCard>
-                    ))}
-                </div>
-                <div className={"relative mt-[37vh] flex lg:justify-center lg:mt-[43vh] "}>
-                    <DislikeIcon className={"h-16 mr-5 w-16 sm:h-16 sm:w-16 md:h-20 md:w-20 lg:mr-5"}
-                                 onClick={() => swipe('left')}/>
-                    <LikeIcon className={"h-16 ml-5 w-16 sm:h-16 sm:w-16 md:h-20 md:w-20 lg:ml-5"}
-                              onClick={() => swipe('right')}/>
-
-                </div>
-                {/*<div className={"flex justify-center"}>
-                {lastDirection ? (
-                    <h2 key={lastDirection} className='infoText mt-4'>
-                        You swiped {lastDirection}
-                    </h2>
-                ) : null}
-            </div>*/}
+                        </div>
+                    </TinderCard>
+                ))}
             </div>
+            <div className={"flex justify-evenly mt-[410px]"}>
 
-        </>
+                <DislikeIcon className={"h-16 w-16"}
+                             onClick={() => swipe('left')}/>
+                <LikeIcon className={"h-16 w-16"}
+                          onClick={() => swipe('right')}/>
 
+            </div>
+        </div>
+
+    </div>
     )
 }
 
-export default CardSwiper
+
+export default Advanced

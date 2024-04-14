@@ -1,82 +1,38 @@
 [
   {
-    "name": "1",
+    "name": "Question title 1",
     "categorie": 0
   },
   {
-    "name": "2",
+    "name": "Question title 2",
     "categorie": 1
   },
   {
-    "name": "3",
+    "name": "Question title 3",
     "categorie": 2
   },
   {
-    "name": "4",
+    "name": "Question title 4",
     "categorie": 3
   },
   {
-    "name": "5",
+    "name": "Question title 5",
     "categorie": 0
   },
   {
-    "name": "6",
+    "name": "Question title 6",
     "categorie": 1
   },
   {
-    "name": "7",
+    "name": "Question title 7",
     "categorie": 2
   },
   {
-    "name": "8",
+    "name": "Question title 8",
     "categorie": 3
   },
   {
-    "name": "9",
+    "name": "Question title 9",
     "categorie": 0
-  },
-  {
-    "name": "10",
-    "categorie": 1
-  },
-  {
-    "name": "11",
-    "categorie": 2
-  },
-  {
-    "name": "12",
-    "categorie": 3
-  },
-  {
-    "name": "13",
-    "categorie": 0
-  },
-  {
-    "name": "14",
-    "categorie": 1
-  },
-  {
-    "name": "15",
-    "categorie": 2
-  },
-  {
-    "name": "16",
-    "categorie": 3
-  },
-  {
-    "name": "17",
-    "categorie": 0
-  },
-  {
-    "name": "18",
-    "categorie": 1
-  },
-  {
-    "name": "19",
-    "categorie": 2
-  },
-  {
-    "name": "20",
-    "categorie": 3
   }
 ]

@@ -7,4 +7,6 @@
 body {
     font-family: 'Lexend', sans-serif;
     color: white;
+    overflow-x: hidden; /* Empêche le défilement horizontal */
+    max-width: 100%; /* Définit la largeur maximale à 100% */
 }

@@ -1,20 +1,20 @@
-import './index.css'
+import './index.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavigationFooter from "./components/NavigationFooter.jsx";
 import FavoriteAssociationsList from "./components/FavoriteAssociationsList.jsx";
 import CardSwiper from "./components/CardSwiper.jsx";
-
+import Profile from "./components/Profile.jsx";
 export default function App() {
     return (
-        <>
-            {/*<div className="artboard phone-1 relative bg-[#25304F] flex justify-center pt-5">*/}
-
-                <div className={"flex items-center justify-center h-screen"}>
-                    <CardSwiper/>
-                </div>
-
-                <NavigationFooter/>
-
-            {/*</div>*/}
-        </>
+        <Router>
+            <div>
+                <Routes>
+                    <Route path="/associations" element={<FavoriteAssociationsList />} />
+                    <Route path="/swipe" element={<CardSwiper />} />
+                    <Route path="/profile" element={<Profile />} />
+                </Routes>
+                <NavigationFooter />
+            </div>
+        </Router>
     );
 }
