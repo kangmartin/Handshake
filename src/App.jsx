@@ -9,7 +9,7 @@ export default function App() {
         <Router>
             <div>
                 <Routes>
-                    <Route path="/associations" element={<FavoriteAssociationsList />} />
+                    <Route path="/" element={<FavoriteAssociationsList />} />
                     <Route path="/swipe" element={<CardSwiper />} />
                     <Route path="/profile" element={<Profile />} />
                 </Routes>
