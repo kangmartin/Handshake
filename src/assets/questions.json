@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Êtes-vous préoccupé par le changement climatique ?",
+    "categorie": 0
+  },
+  {
+    "name": "Seriez-vous prêt à réduire votre consommation de viande pour l'environnement ?",
+    "categorie": 1
+  },
+  {
+    "name": "Pensez-vous que le recyclage soit une solution efficace à la pollution ?",
+    "categorie": 2
+  },
+  {
+    "name": "Considérez-vous important d'acheter des produits locaux pour réduire l'empreinte carbone ?",
+    "categorie": 3
+  },
+  {
+    "name": "Seriez-vous prêt à renoncer à votre voiture pour des transports plus écologiques ?",
+    "categorie": 0
+  },
+  {
+    "name": "Estimez-vous que la protection des forêts tropicales soit cruciale pour l'avenir de notre planète ?",
+    "categorie": 1
+  },
+  {
+    "name": "Croyez-vous que chaque individu a un rôle important à jouer dans la préservation de l'environnement ?",
+    "categorie": 2
+  },
+  {
+    "name": "Seriez-vous disposé à payer plus cher pour des énergies renouvelables ?",
+    "categorie": 3
+  },
+  {
+    "name": "Pensez-vous que les gouvernements devraient imposer des lois plus strictes sur la pollution des entreprises ?",
+    "categorie": 0
+  }
+]
